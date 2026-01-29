@@ -320,3 +320,4 @@ class entity:
         self.a = [self.moveDir[0] * self.speed, self.moveDir[1] * self.speed]
     def respawn(self):
         self.pos = self.spawnpoint
+del window
