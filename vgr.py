@@ -176,11 +176,11 @@ class entity:
         alwaysshowhitbox=False,
         rect=[(0, 0, 255), 0],
         g=[0, 0],
-        oldpos=[0, 0],
-        roundpos=True,
-        voiddeath=False,
-        spawnpoint=[0, 0],
-        flip=True,
+    #    oldpos=[0, 0],
+    #    roundpos=True,
+    #    voiddeath=False,
+    #    spawnpoint=[0, 0],
+    #    flip=True,
     ):
         self.pos = pos
         self.entityType = entityType
@@ -191,7 +191,10 @@ class entity:
         self.controls = controls
         self.image = image
         self.imageright = image
-        self.imageleft = pygame.transform.flip(image, True, False)
+        if image != None:
+            self.imageleft = pygame.transform.flip(image, True, False)
+        else:
+            self.imageleft = None
         self.speed = speed
         self.jump = jump
         self.coyote = coyote
@@ -200,15 +203,15 @@ class entity:
         self.alwaysshowhitbox = alwaysshowhitbox
         self.rect = rect
         self.g = g
-        self.oldpos = oldpos
+        self.oldpos = [0,0]
         self.maxcoyote = maxcoyote
-        self.roundpos = roundpos
-        self.voideath = voiddeath
-        self.spawnpoint = spawnpoint
+        self.roundpos = [0,0]
+        self.voideath = False
+        self.spawnpoint = [0,0]
         self.helddownkeys = []
         self.moveDir = [0, 0]
         self.faceright = False
-        self.flip = flip
+        self.flip = False
         self.right = True
         self.coll = coll
         self.window = None
