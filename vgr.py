@@ -173,7 +173,7 @@ class entity:
         jumpheight=60,
         coll=True,
         hitbox=[0, 0, 64, 64],
-        alwaysshowhitbox=False,
+        showHitbox=False,
         rect=[(0, 0, 255), 0],
         g=[0, 0],
     #    oldpos=[0, 0],
@@ -200,7 +200,7 @@ class entity:
         self.coyote = coyote
         self.jumpheight = jumpheight
         self.hitbox = hitbox
-        self.alwaysshowhitbox = alwaysshowhitbox
+        self.showHitbox = showHitbox
         self.rect = rect
         self.g = g
         self.oldpos = [0,0]
@@ -280,24 +280,20 @@ class entity:
         self.hitbox = [self.pos[0], self.pos[1], self.hitbox[2], self.hitbox[3]]
         if self.roundpos:
             self.pos = [round(self.pos[0]), round(self.pos[1])]
-        if self.alwaysshowhitbox:
-            pygame.draw.rect(
-                self.window,
-                self.rect[0],
-                [
-                    self.hitbox[0] - self.camera[0],
-                    self.hitbox[1] - self.camera[1],
-                    self.hitbox[2],
-                    self.hitbox[3],
-                ],
-                self.rect[1],
-            )
-        if (
-            self.pos[0] > self.camera[0]
+        if self.window != None:
+            if self.showHitbox:
+                    pygame.draw.rect( self.window, self.rect[0], [
+                            self.hitbox[0] - self.camera[0],
+                            self.hitbox[1] - self.camera[1],
+                            self.hitbox[2],
+                            self.hitbox[3], ],
+                        self.rect[1],
+                    )
+        if ( self.pos[0] > self.camera[0]
             and self.pos[1] > self.camera[1]
             and self.pos[0] < (self.camera[0] + self.window.get_size()[0])
             and self.pos[0] < (self.camera[0] + self.window.get_size()[0])
-        ):
+        ) and self.image !=None:
             self.window.blit(
                 self.image, (self.pos[0] - self.camera[0], self.pos[1] - self.camera[1])
             )
@@ -324,3 +320,23 @@ class entity:
     def respawn(self):
         self.pos = self.spawnpoint
 del window
+
+def img(source, trans=False, scale=None):
+    if scale is None:
+        if trans:
+            img = pygame.image.load(source).convert_alpha()
+        else:
+            img = pygame.image.load(source).convert()
+        return img
+    else:
+        if trans:
+            img = pygame.transform.scale( pygame.image.load(source).convert_alpha(), scale)
+        else:
+            img = pygame.transform.scale(pygame.image.load(source).convert(), scale)
+        return img
+
+def scale(img, scale):
+    img = pygame.transform.scale(img, scale)
+    return img
+
+
