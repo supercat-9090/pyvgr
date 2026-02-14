@@ -6,11 +6,11 @@ print("Initiating")
 win = pygame.display.set_mode((640, 640))
 print("Main loop starting")
 running = True
-test = vgr.entity()
+test = vgr.Entity()
 test.showHitbox = True
 test.window = win
 test.coll = True
-tilemap = vgr.tilemap()
+tilemap = vgr.Tilemap()
 tilemap.tileset = [vgr.img("empty.png",True,(64,64)),vgr.img("grass.png",False,(64,64))]
 tilemap.blockSize = 64
 tilemap.map = [

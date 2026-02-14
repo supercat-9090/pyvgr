@@ -10,7 +10,7 @@ window = pygame.display.set_mode((640, 640))
 
 
 # functions----------------------------------------------------------------------------------------
-class tilemap:
+class Tilemap:
     def __init__(self):
         self.size = [0, 0]
         self.map = []
@@ -31,7 +31,7 @@ class tilemap:
             for j in range(self.size[0]):
                 string[i][j] = int(string[i][j])
         self.map = string
-
+    """
     def blit(self, window, camera):
         blockDisplayPosition = [0 - camera.pos[0], 0 - camera.pos[1]]
         currentBlockPos = [0, 0]
@@ -74,7 +74,7 @@ class tilemap:
                 currentBlockPos[0] += 1
             currentBlockPos[0] = 0
             currentBlockPos[1] += 1
-
+    """
     def surface(self, camera, size):
         surface = pygame.Surface(size, pygame.SRCALPHA)
         blockDisplayPosition = [0 - camera[0], 0 - camera[1]]
@@ -147,7 +147,7 @@ class tilemap:
         return self.map[pos[1]][pos[0]]
 
 
-class entity:
+class Entity:
     """
     The entity class----
     Functions:
