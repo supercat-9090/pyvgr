@@ -11,10 +11,14 @@ window = pygame.display.set_mode((640, 640))
 
 # functions----------------------------------------------------------------------------------------
 class Tilemap:
-    def __init__(self):
+    def __init__(self,blockSize = None):
         self.size = [0, 0]
         self.map = []
-        self.blockSize = 32
+        if blockSize == None:
+            self.blockSize = 32
+            print("Warning, block size not defined, defaulting to 32px")
+        else:
+            self.blockSize = blockSize
         self.tileset = []
 
     def loadstr(self, string):

@@ -10,9 +10,8 @@ test = vgr.Entity()
 test.showHitbox = True
 test.window = win
 test.coll = True
-tilemap = vgr.Tilemap()
+tilemap = vgr.Tilemap(64)
 tilemap.tileset = [vgr.img("empty.png",True,(64,64)),vgr.img("grass.png",False,(64,64))]
-tilemap.blockSize = 64
 tilemap.map = [
         [0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0],
